@@ -3,6 +3,7 @@ package com.microservice.client.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microservice.client.beans.PatientBean;
@@ -16,8 +17,15 @@ public class ClientController {
 		this.patientsProxy = patientsProxy;
 	}
 	
-	@GetMapping("/")
+	@GetMapping("/patients")
 	public List<PatientBean> accueil(){
 		return patientsProxy.getAllPatient();
 	}
+	
+	@GetMapping("/patient{id}")
+	public PatientBean getPatientById(@PathVariable String id) {
+		return patientsProxy.getPatient(id);
+	}
+	
+	
 }

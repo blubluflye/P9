@@ -51,11 +51,11 @@ public class PatientController {
 		return "user : " + patient.getName() + " " + patient.getSurname() + " doesn't exist";	
 	}
 	
-	@PostMapping("/patient/add")
+	@PostMapping("/patient/create")
 	/*
 	 * TODO: seul le téléphone et l'addresse peuvent être vide pour une création 
 	 */
-	public String addPatient(@RequestBody Patient patient) {
+	public String createPatient(@RequestBody Patient patient) {
 		if ((patientRepository.findByNameAndSurname(patient.getName(), patient.getSurname())) == null) {
 
 			patientRepository.save(patient);
