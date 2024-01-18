@@ -22,7 +22,7 @@ public class ClientController {
 		return patientsProxy.getAllPatient();
 	}
 	
-	@GetMapping("/patient{id}")
+	@GetMapping("/patient/{id}")
 	public PatientBean getPatientById(@PathVariable String id) {
 		return patientsProxy.getPatient(id);
 	}
