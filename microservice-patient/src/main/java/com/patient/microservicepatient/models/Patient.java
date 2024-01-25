@@ -1,6 +1,18 @@
-package com.microservice.client.beans;
+package com.patient.microservicepatient.models;
 
-public class PatientBean {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name="patients")
+public class Patient {
+	@Id
+	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Integer id;
 	private String name;
 	private String surname;
@@ -8,11 +20,6 @@ public class PatientBean {
 	private String genre;
 	private String address;
 	private String telephone;
-	
-	public Integer getId() {
-		return id;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -49,18 +56,7 @@ public class PatientBean {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-	
-	 @Override
-	 public String toString() 
-	{
-	    return "PatientBean{" +
-	      "id=" + id +
-	      ", name='" + name + '\'' +
-	      ", surname='" + surname + '\'' +
-	      ", birthdate='" + birthdate + '\'' +
-	      ", genre='" + genre + '\'' +
-	      ", address='" + address + '\'' +
-	      ", telephone='" + telephone  +
-	          '}';
-	 }
+	public Integer getId() {
+		return id;
+	}
 }

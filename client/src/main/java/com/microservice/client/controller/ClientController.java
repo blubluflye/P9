@@ -2,8 +2,12 @@ package com.microservice.client.controller;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microservice.client.beans.PatientBean;
@@ -22,10 +26,22 @@ public class ClientController {
 		return patientsProxy.getAllPatient();
 	}
 	
-	@GetMapping("/patient/{id}")
-	public PatientBean getPatientById(@PathVariable String id) {
+	@GetMapping("/patients/{id}")
+	public PatientBean getPatientById(@PathVariable Integer id) {
 		return patientsProxy.getPatient(id);
 	}
 	
+	@PutMapping("/patients/{id}")
+	public ResponseEntity updatePatient(@PathVariable Integer id, @RequestBody PatientBean patient)
+	{
+		patientsProxy.updatePatient(id, patient);
+		return ResponseEntity.ok(patient);
+	}
 	
+	@PostMapping("/patients/")
+	public ResponseEntity createPatient(@RequestBody PatientBean patient)
+	{
+		patientsProxy.createPatient(patient);
+		return ResponseEntity.ok(patient);
+	}
 }

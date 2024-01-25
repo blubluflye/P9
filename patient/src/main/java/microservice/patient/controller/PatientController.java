@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,11 +39,13 @@ public class PatientController {
         return patientRepository.findByNameAndSurname(name, surname);
     }
 	
-	@PostMapping("/patient/update")
-	public String updatePatient(@RequestBody Patient patient) {
+	@PutMapping("/patient/update{id}")
+	public String updatePatient(@PathVariable String id, @RequestBody Patient patient) {
 		Patient patientToUpdate;
-		if ((patientToUpdate =patientRepository.findByNameAndSurname(patient.getName(), patient.getSurname())) != null)
+		if ((patientToUpdate =patientRepository.findById(id).get()) != null)
 		{
+			patientToUpdate.setSurname(patient.getSurname());
+			patientToUpdate.setName(patient.getName());
 			patientToUpdate.setAddress(patient.getAddress());
 			patientToUpdate.setTelephone(patient.getTelephone());
 			patientRepository.save(patientToUpdate);
