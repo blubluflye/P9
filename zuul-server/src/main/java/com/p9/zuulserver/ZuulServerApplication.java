@@ -1,17 +1,17 @@
-package com.microservice.client;
+package com.p9.zuulserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 @SpringBootApplication
-@EnableFeignClients("com.microservice.client")
+@EnableZuulProxy
 @EnableDiscoveryClient
-public class ClientApplication {
+public class ZuulServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ClientApplication.class, args);
+		SpringApplication.run(ZuulServerApplication.class, args);
 	}
 
 }

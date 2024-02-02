@@ -2,6 +2,7 @@ package com.microservice.client.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +16,8 @@ import com.microservice.client.proxies.MicroservicePatientProxy;
 
 @RestController
 public class ClientController {
-	private final MicroservicePatientProxy patientsProxy;
+	@Autowired
+	private MicroservicePatientProxy patientsProxy;
 	
 	public ClientController(MicroservicePatientProxy patientsProxy) {
 		this.patientsProxy = patientsProxy;
@@ -32,14 +34,14 @@ public class ClientController {
 	}
 	
 	@PutMapping("/patients/{id}")
-	public ResponseEntity updatePatient(@PathVariable Integer id, @RequestBody PatientBean patient)
+	public ResponseEntity<PatientBean> updatePatient(@PathVariable Integer id, @RequestBody PatientBean patient)
 	{
 		patientsProxy.updatePatient(id, patient);
 		return ResponseEntity.ok(patient);
 	}
 	
 	@PostMapping("/patients/")
-	public ResponseEntity createPatient(@RequestBody PatientBean patient)
+	public ResponseEntity<PatientBean> createPatient(@RequestBody PatientBean patient)
 	{
 		patientsProxy.createPatient(patient);
 		return ResponseEntity.ok(patient);
