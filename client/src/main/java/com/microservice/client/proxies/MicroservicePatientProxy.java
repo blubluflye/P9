@@ -13,21 +13,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.microservice.client.beans.PatientBean;
 
 /*
+ * abandon zuul server
  * à remplacer par pour tester avec zuul server si ça fonctionne
  * @FeignClient(name = "zuul-server")
  */
-@FeignClient(name = "zuul-server")
+@FeignClient(name = "microservice-patients")
 @RibbonClient(name = "microservice-patients")
 public interface MicroservicePatientProxy {
-	@GetMapping(value= "/microservice-patients/patients")
+	@GetMapping(value= "/patients")
 	List<PatientBean> getAllPatient();
 	
-	@GetMapping("/microservice-patients/patients/{id}")
+	@GetMapping("/patients/{id}")
 	PatientBean getPatient(@PathVariable Integer id);
 	
-	@PutMapping("/microservice-patients/patients/{id}")
+	@PutMapping("/patients/{id}")
 	String updatePatient(@PathVariable Integer id, @RequestBody PatientBean patient);
 	
-	@PostMapping("/microservice-patients/patients")
+	@PostMapping("/patients")
 	String createPatient(@RequestBody PatientBean patient);
 }
