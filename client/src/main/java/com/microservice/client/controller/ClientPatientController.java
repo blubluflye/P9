@@ -15,11 +15,11 @@ import com.microservice.client.beans.PatientBean;
 import com.microservice.client.proxies.MicroservicePatientProxy;
 
 @RestController
-public class ClientController {
+public class ClientPatientController {
 	@Autowired
 	private MicroservicePatientProxy patientsProxy;
 	
-	public ClientController(MicroservicePatientProxy patientsProxy) {
+	public ClientPatientController(MicroservicePatientProxy patientsProxy) {
 		this.patientsProxy = patientsProxy;
 	}
 	
