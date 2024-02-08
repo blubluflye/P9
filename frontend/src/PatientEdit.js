@@ -21,7 +21,7 @@ class PatientEdit extends Component {
 
     async componentDidMount() {
     	if (this.props.match.params.id !== 'new') {
-        	const patient = await (await fetch(`/patients/${this.props.match.params.id}`)).json();
+        	const patient = await (await fetch(`/patients/${this.props.match.params.patId}`)).json();
         	this.setState({item: patient});
     	}
     }

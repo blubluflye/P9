@@ -41,7 +41,8 @@ class PatientList extends Component {
             <td>
                 <ButtonGroup>
                     <Button size="sm" color="primary" tag={Link} to={"/patients/" + patient.id}>Edit</Button>
-                </ButtonGroup>
+		    <Button size="sm" color="secondary" tag={Link} to={"/notes/" + patient.id}>Historique</Button>
+		</ButtonGroup>
             </td>
         </tr>
     });
