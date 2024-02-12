@@ -18,7 +18,6 @@ class NoteList extends Component {
 
     render() {
         const {notes} = this.state;
-
         const noteList = notes.map(note => {
             return <tr key={note.id}>
                 <td style={{whiteSpace: 'nowrap'}}>{note.name}</td>
@@ -29,6 +28,9 @@ class NoteList extends Component {
 	<div>
             <AppNavbar/>
             <Container fluid>
+	         <div className="float-right">
+                    <Button color="success" tag={Link} to={"/note/add/" + this.props.match.params.id}>Add Patient</Button>
+	    	  </div>
                 <h3>Historique</h3>
                 <Table className="mt-4">
                     <thead>
