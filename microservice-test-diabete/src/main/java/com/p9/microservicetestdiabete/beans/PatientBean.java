@@ -1,31 +1,20 @@
-package com.patient.microservicepatient.models;
-
-
+package com.p9.microservicetestdiabete.beans;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Data;
-
-@Data
-@Entity
-@Table(name="patients")
-public class Patient {
-	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
+public class PatientBean {
 	private Integer id;
 	private String name;
 	private String surname;
-	@Column(columnDefinition = "DATE")
 	private LocalDate birthdate;
 	private String genre;
 	private String address;
 	private String telephone;
+	
+	public Integer getId() {
+		return id;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -62,7 +51,18 @@ public class Patient {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-	public Integer getId() {
-		return id;
-	}
+	
+	 @Override
+	 public String toString() 
+	{
+	    return "PatientBean{" +
+	      "id=" + id +
+	      ", name='" + name + '\'' +
+	      ", surname='" + surname + '\'' +
+	      ", birthdate='" + birthdate + '\'' +
+	      ", genre='" + genre + '\'' +
+	      ", address='" + address + '\'' +
+	      ", telephone='" + telephone  +
+	          '}';
+	 }
 }
