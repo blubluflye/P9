@@ -1,10 +1,14 @@
 package com.patient.microservicepatient.models;
 
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.Data;
 
 @Data
@@ -16,7 +20,8 @@ public class Patient {
 	private Integer id;
 	private String name;
 	private String surname;
-	private String birthdate;
+	@Temporal(TemporalType.DATE)
+	private Date birthdate;
 	private String genre;
 	private String address;
 	private String telephone;
@@ -32,10 +37,10 @@ public class Patient {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-	public String getBirthdate() {
+	public Date getBirthdate() {
 		return birthdate;
 	}
-	public void setBirthdate(String birthdate) {
+	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
 	}
 	public String getGenre() {
