@@ -29,8 +29,11 @@ class NoteList extends Component {
             <AppNavbar/>
             <Container fluid>
 	         <div className="float-right">
-                    <Button color="success" tag={Link} to={"/note/add/" + this.props.match.params.id}>Add Patient</Button>
+                    <Button color="success" tag={Link} to={"/note/add/" + this.props.match.params.id}>Add Note</Button>
 	    	  </div>
+	          <div className="float-right">
+                    <Button color="success" tag={Link} to={"/testDiabete/" + this.props.match.params.id}>Test Diabete</Button>
+                  </div>
                 <h3>Historique</h3>
                 <Table className="mt-4">
                     <thead>

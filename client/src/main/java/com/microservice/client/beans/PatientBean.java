@@ -1,10 +1,12 @@
 package com.microservice.client.beans;
 
+import java.time.LocalDate;
+
 public class PatientBean {
 	private Integer id;
 	private String name;
 	private String surname;
-	private String birthdate;
+	private LocalDate birthdate;
 	private String genre;
 	private String address;
 	private String telephone;
@@ -25,10 +27,10 @@ public class PatientBean {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-	public String getBirthdate() {
+	public LocalDate getBirthdate() {
 		return birthdate;
 	}
-	public void setBirthdate(String birthdate) {
+	public void setBirthdate(LocalDate birthdate) {
 		this.birthdate = birthdate;
 	}
 	public String getGenre() {

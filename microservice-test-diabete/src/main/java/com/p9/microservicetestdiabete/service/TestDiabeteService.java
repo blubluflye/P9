@@ -3,9 +3,12 @@ package com.p9.microservicetestdiabete.service;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.p9.microservicetestdiabete.beans.NoteBean;
 import com.p9.microservicetestdiabete.beans.PatientInfo;
 
+@Service
 public class TestDiabeteService {
 	public String testdiabete(PatientInfo patientInfo) {
 		int count = 0;

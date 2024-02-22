@@ -7,7 +7,11 @@ class PatientEdit extends Component {
 
     emptyItem = {
         name: '',
-        surname: ''
+        surname: '',
+	birthdate: '',
+	genre: '',
+	address: '',
+	telephone: ''
     };
 
     constructor(props) {

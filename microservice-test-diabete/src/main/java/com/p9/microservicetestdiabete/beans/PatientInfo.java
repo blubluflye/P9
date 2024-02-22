@@ -5,26 +5,46 @@ import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
 import java.util.List;
 
-public record PatientInfo() {
+public class PatientInfo {
 
-	static private PatientBean patient;
-	static private List<NoteBean> notes;
+	private PatientBean patient;
+	private List<NoteBean> notes;
 	
-	/**
-	 * @return the notes
-	 */
-	public List<NoteBean> getNotes() {
-		return notes;
+
+
+	public PatientInfo() {
+		super();
 	}
-	
-	/**
-	 * @return the patient
-	 */
+
+
+
 	public PatientBean getPatient() {
 		return patient;
 	}
 
+
+
+	public void setPatient(PatientBean patient) {
+		this.patient = patient;
+	}
+
+
+
+	public List<NoteBean> getNotes() {
+		return notes;
+	}
+
+
+
+	public void setNotes(List<NoteBean> notes) {
+		this.notes = notes;
+	}
+
+
+
 	public long getAge() {
+		if (patient.getBirthdate() == null)
+			return 30;
 		return patient.getBirthdate().until(LocalDate.now(), ChronoUnit.YEARS);
 	}
 	

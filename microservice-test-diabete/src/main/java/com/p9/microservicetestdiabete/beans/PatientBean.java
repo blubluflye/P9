@@ -34,6 +34,8 @@ public class PatientBean {
 		this.birthdate = birthdate;
 	}
 	public String getGenre() {
+		if (genre == null)
+			return "M";
 		return genre;
 	}
 	public void setGenre(String genre) {
