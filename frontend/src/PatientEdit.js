@@ -64,19 +64,39 @@ class PatientEdit extends Component {
             	{title}
             	<Form onSubmit={this.handleSubmit}>
                     <FormGroup>
-                    	<Label for="name">Name</Label>
+                    	<Label for="name">Name *</Label>
                     	<Input type="text" name="name" id="name" value={item.name || ''}
                             onChange={this.handleChange} autoComplete="name"/>
-                </FormGroup>
-                <FormGroup>
-                    <Label for="surname">Surname</Label>
-                    <Input type="text" name="surname" id="surname" value={item.surname || ''}
-                           onChange={this.handleChange} autoComplete="surname"/>
-                </FormGroup>
-                <FormGroup>
-                    <Button color="primary" type="submit">Save</Button>{' '}
-	    	    <Button color="secondary" tag={Link} to="/patients">Cancel</Button>
-                </FormGroup>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="surname">Surname *</Label>
+                        <Input type="text" name="surname" id="surname" value={item.surname || ''}
+                            onChange={this.handleChange} autoComplete="surname"/>
+                    </FormGroup>
+		    <FormGroup>
+                        <Label for="birthdate">Birthdate</Label>
+                        <Input type="text" name="birthdate" id="birthdate" value={item.birthdate || ''}
+                            onChange={this.handleChange} autoComplete="birthdate"/>
+                    </FormGroup>
+		    <FormGroup>
+                        <Label for="genre">Genre</Label>
+                        <Input type="text" name="genre" id="genre" value={item.genre || ''}
+                            onChange={this.handleChange} autoComplete="genre"/>
+                    </FormGroup>
+		    <FormGroup>
+                        <Label for="address">Address</Label>
+                        <Input type="text" name="address" id="address" value={item.address || ''}
+                            onChange={this.handleChange} autoComplete="address"/>
+                    </FormGroup>
+		    <FormGroup>
+                        <Label for="telephone">Telephone</Label>
+                        <Input type="text" name="telephone" id="telephone" value={item.telephone || ''}
+                            onChange={this.handleChange} autoComplete="telephone"/>
+                    </FormGroup>
+                    <FormGroup>
+                        <Button color="primary" type="submit">Save</Button>{' '}
+	    	        <Button color="secondary" tag={Link} to="/patients">Cancel</Button>
+                    </FormGroup>
             	</Form>
             </Container>
     	</div>
