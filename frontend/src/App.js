@@ -18,7 +18,7 @@ class App extends Component {
             <Route path='/patients/:id' component={PatientEdit}/>
 	    <Route path='/notes/:id' component={NoteList}/>
             <Route path='/note/add/:id' component={NoteAdd}/>
-	    <Route pathe='/testDiabete/:id' component={TestDiabete}/>
+	    <Route path='/testDiabete/:id' component={TestDiabete}/>
 	  </Switch>
         </Router>
     )

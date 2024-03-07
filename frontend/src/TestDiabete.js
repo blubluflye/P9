@@ -1,34 +1,41 @@
 import React, { Component } from 'react';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
 import AppNavbar from './AppNavbar';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
+import { useParams , withRouter} from 'react-router';
 
 class TestDiabete extends Component {
+
+
+    emptyItem = {
+        result: '',
+    };
 
     constructor(props) {
         super(props);
         this.state = {
-	    item: ""
+	    item: this.emptyItem
 	};
     }
 
-    componentDidMount() {
-        const result = fetch(`/TestDb/${this.props.match.params.id}`);
-	this.setState({item: result});
+    async componentDidMount() {
+	console.log(this.props.match.params);
+	const result =await (await fetch(`/TestDb/${this.props.match.params.id}`)).json();
+        this.setState({item: result});
     }
 
     render() {
-        const {result} = this.state;
+        const {item} = this.state;
         return (
         <div>
             <AppNavbar/>
             <Container fluid>
-	       <h3>result : {result}</h3>
+	       <h3>result : {item.result}</h3>
             </Container>
         </div>
     );
 
   }
 }
-export default TestDiabete;
+export default withRouter(TestDiabete);
 
