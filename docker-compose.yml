@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  config:
+    build:
+      context: ./config-server
+    ports:
+      - "9101:9101"
+    networks:
+      - mynetwork
+  eureka:
+    build:
+      context: ./eureka-server
+    restart: always
+    ports:
+      - "9102:9102"
+    depends_on:
+      - config
+    networks:
+      - mynetwork
+  patient:
+    build:
+      context: ./microservice-patient
+    restart: always
+    ports:
+      - "9001:9001"
+    depends_on:
+      - config
+      - eureka
+    networks:
+      - mynetwork
+  note:
+    build:
+      context: ./microservice-note
+    restart: always
+    ports:
+      - "9002:9002"
+    depends_on:
+      - config
+    networks:
+      - mynetwork
+  test-diabete:
+    build:
+      context: ./microservice-test-diabete
+    restart: always
+    ports:
+      - "9005:9005"
+    depends_on:
+      - config
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    external: true
