@@ -49,6 +49,20 @@ services:
       - config
     networks:
       - mynetwork
+  client:
+    build:
+      context: ./client
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - config
+      - patient
+      - note
+      - test-diabete
+      - eureka
+    networks:
+      - mynetwork
 
 networks:
   mynetwork:
