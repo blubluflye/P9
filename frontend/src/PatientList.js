@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+
+const INSTRUCTOR = 'user'
+const PASSWORD = 'pass'
 
 class PatientList extends Component {
 
@@ -12,9 +16,18 @@ class PatientList extends Component {
     }
 
     componentDidMount() {
+	/*try new method to call api with axios for authentication*/
+ 	axios.get('/patients',
+            { headers: { authorization: 'Basic ' + window.btoa(INSTRUCTOR + ":" + PASSWORD) } }
+        ).then(response => {
+	        this.setState({patients: response.data})
+	    }
+	);
+	/*old method without authentication /
         fetch('/patients')
             .then(response => response.json())
             .then(data => this.setState({patients: data}));
+	*/
     }
 
     async remove(id) {

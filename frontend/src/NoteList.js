@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+
+const INSTRUCTOR = 'user'
+const PASSWORD = 'pass'
+
 
 class NoteList extends Component {
 
@@ -11,9 +16,17 @@ class NoteList extends Component {
     }
 
     componentDidMount() {
+	axios.get(`/notes${this.props.match.params.id}`,
+            { headers: { authorization: 'Basic ' + window.btoa(INSTRUCTOR + ":" + PASSWORD) } }
+        ).then(response => {
+                this.setState({notes: response.data})
+            }
+        );
+	/*old method without authentication 
         fetch(`/notes${this.props.match.params.id}`)
             .then(response => response.json())
             .then(data => this.setState({notes: data}));
+	*/
     }
 
     render() {
