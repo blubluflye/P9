@@ -24,13 +24,14 @@ public class ClientNoteController {
 		this.notesProxy = notesProxy;
 	}
 	
-	@GetMapping("/notes{patId}")
+	@GetMapping("/notes/{patId}")
 	public List<NoteBean> getPatientNotes(@PathVariable Integer patId){
 		return notesProxy.getPatientNote(patId);
 	}
 	
-	@PostMapping("/notes{patId}")
+	@PostMapping("/notes/{patId}")
 	public ResponseEntity<NoteBean> addPatientNote(@PathVariable Integer patId, @RequestBody NoteBean note) throws URISyntaxException{
+		System.out.println("demande d'ajout de note reçu. envoie de la demande au miicroservice note");
 		return notesProxy.createNote(patId, note);
 	}
 	

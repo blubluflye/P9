@@ -3,6 +3,10 @@ import { Link, withRouter } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 
+const INSTRUCTOR = 'user'
+const PASSWORD = 'pass'
+
+
 class NoteAdd extends Component {
 
     emptyItem = {
@@ -32,12 +36,13 @@ class NoteAdd extends Component {
     async handleSubmit(event) {
         event.preventDefault();
         const {item} = this.state;
-
-        await fetch('/notes' + (this.props.match.params.id), {
+	//method with basic authentication
+        await fetch('/notes/' + (this.props.match.params.id), {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+		'Authorization': 'Basic ' + window.btoa(INSTRUCTOR + ":" + PASSWORD)
             },
             body: JSON.stringify(item),
         });

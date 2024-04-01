@@ -21,13 +21,14 @@ public class NoteController {
 	@Autowired
 	private NoteRepository notes;
 	
-	@GetMapping("/notes{id}")
+	@GetMapping("/notes/{id}")
 	public List<Note> getPatientNote(@PathVariable Integer id) {
 		return notes.findByPatId(id);
 	}
 	
-	@PostMapping("/notes{patId}")
+	@PostMapping("/notes/{patId}")
 	public ResponseEntity<Note> createNote(@PathVariable Integer patId, @RequestBody Note note) throws URISyntaxException{
+		System.out.println("debut de l'ajout de la note :" + note.getName());
 		note.setPatId(patId);
 		Note savedNote = notes.save(note);
 		return ResponseEntity.created(new URI("/notes" + savedNote.getId())).body(savedNote);

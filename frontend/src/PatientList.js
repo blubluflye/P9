@@ -23,7 +23,7 @@ class PatientList extends Component {
 	        this.setState({patients: response.data})
 	    }
 	);
-	/*old method without authentication /
+	/*old method without authentication 
         fetch('/patients')
             .then(response => response.json())
             .then(data => this.setState({patients: data}));
@@ -53,7 +53,7 @@ class PatientList extends Component {
 		<td>{patient.id}</td>
             <td>
                 <ButtonGroup>
-                    <Button size="sm" color="primary" tag={Link} to={"/patients/" + patient.id}>Edit</Button>
+                    <Button size="sm" color="primary" tag={Link} to={"/patients/edit/" + patient.id}>Edit</Button>
 		    <Button size="sm" color="secondary" tag={Link} to={"/notes/" + patient.id}>Historique</Button>
 		</ButtonGroup>
             </td>
@@ -65,7 +65,7 @@ class PatientList extends Component {
             <AppNavbar/>
             <Container fluid>
                 <div className="float-right">
-                    <Button color="success" tag={Link} to="/Patients/new">Add Patient</Button>
+                    <Button color="success" tag={Link} to="/patients/add">Add Patient</Button>
                 </div>
                 <h3>Patients</h3>
                 <Table className="mt-4">

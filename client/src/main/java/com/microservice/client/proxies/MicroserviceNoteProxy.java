@@ -18,8 +18,8 @@ import com.microservice.client.beans.NoteBean;
 @RibbonClient(name = "microservice-notes")
 public interface MicroserviceNoteProxy {
 
-	@GetMapping("/notes{id}")
+	@GetMapping("/notes/{id}")
 	public List<NoteBean> getPatientNote(@PathVariable Integer id);
-	@PostMapping("/notes{patId}")
+	@PostMapping("/notes/{patId}")
 	public ResponseEntity<NoteBean> createNote(@PathVariable Integer patId, @RequestBody NoteBean note) throws URISyntaxException;
 }

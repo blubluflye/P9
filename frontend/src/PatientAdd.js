@@ -6,7 +6,7 @@ import AppNavbar from './AppNavbar';
 const INSTRUCTOR = 'user'
 const PASSWORD = 'pass'
 
-class PatientEdit extends Component {
+class PatientAdd extends Component {
 
     emptyItem = {
         name: '',
@@ -28,11 +28,8 @@ class PatientEdit extends Component {
 
     async componentDidMount() {
     	if (this.props.match.params.id !== 'new') {
-        	//const patient = await (await fetch(`/patients/${this.props.match.params.patId}`)).json();
-        	//this.setState({item: patient});
-		 fetch(`/patients/${this.props.match.params.id}`)
-            .then(response => response.json())
-            .then(data => this.setState({item: data}));
+        	const patient = await (await fetch(`/patients/${this.props.match.params.patId}`)).json();
+        	this.setState({item: patient});
     	}
     }
 
@@ -49,8 +46,8 @@ class PatientEdit extends Component {
     	event.preventDefault();
     	const {item} = this.state;
 
-    	await fetch('/patients/' + item.id, {
-            method: 'PUT',
+    	await fetch('/patients' + (item.id ? '/' + item.id : '/'), {
+            method: (item.id) ? 'PUT' : 'POST',
             headers: {
             	'Accept': 'application/json',
             	'Content-Type': 'application/json',
@@ -63,7 +60,7 @@ class PatientEdit extends Component {
 
     render() {
     	const {item} = this.state;
-    	const title = <h2>{'Edit Patient'}</h2>;
+    	const title = <h2>{item.id ? 'Edit Patient' : 'Add Patient'}</h2>;
 
     	return <div>
             <AppNavbar/>
@@ -72,32 +69,32 @@ class PatientEdit extends Component {
             	<Form onSubmit={this.handleSubmit}>
                     <FormGroup>
                     	<Label for="name">Name *</Label>
-                    	<Input type="text" name="name" id="name" value={item.name}
+                    	<Input type="text" name="name" id="name" value={item.name || ''}
                             onChange={this.handleChange} autoComplete="name"/>
                     </FormGroup>
                     <FormGroup>
                         <Label for="surname">Surname *</Label>
-                        <Input type="text" name="surname" id="surname" value={item.surname}
+                        <Input type="text" name="surname" id="surname" value={item.surname || ''}
                             onChange={this.handleChange} autoComplete="surname"/>
                     </FormGroup>
 		    <FormGroup>
                         <Label for="birthdate">Birthdate</Label>
-                        <Input type="date" name="birthdate" id="birthdate" value={item.birthdate}
+                        <Input type="date" name="birthdate" id="birthdate" value={item.birthdate || ''}
                             onChange={this.handleChange} autoComplete="birthdate"/>
                     </FormGroup>
 		    <FormGroup>
                         <Label for="genre">Genre</Label>
-                        <Input type="text" name="genre" id="genre" value={item.genre}
+                        <Input type="text" name="genre" id="genre" value={item.genre || ''}
                             onChange={this.handleChange} autoComplete="genre"/>
                     </FormGroup>
 		    <FormGroup>
                         <Label for="address">Address</Label>
-                        <Input type="text" name="address" id="address" value={item.address}
+                        <Input type="text" name="address" id="address" value={item.address || ''}
                             onChange={this.handleChange} autoComplete="address"/>
                     </FormGroup>
 		    <FormGroup>
                         <Label for="telephone">Telephone</Label>
-                        <Input type="text" name="telephone" id="telephone" value={item.telephone}
+                        <Input type="text" name="telephone" id="telephone" value={item.telephone || ''}
                             onChange={this.handleChange} autoComplete="telephone"/>
                     </FormGroup>
                     <FormGroup>
@@ -109,4 +106,4 @@ class PatientEdit extends Component {
     	</div>
     }
 }
-export default withRouter(PatientEdit);
+export default withRouter(PatientAdd);

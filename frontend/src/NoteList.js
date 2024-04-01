@@ -16,17 +16,17 @@ class NoteList extends Component {
     }
 
     componentDidMount() {
-	axios.get(`/notes${this.props.match.params.id}`,
+	/*axios.get(`/notes${this.props.match.params.id}`,
             { headers: { authorization: 'Basic ' + window.btoa(INSTRUCTOR + ":" + PASSWORD) } }
         ).then(response => {
                 this.setState({notes: response.data})
             }
-        );
-	/*old method without authentication 
-        fetch(`/notes${this.props.match.params.id}`)
+        );*/
+	/*old method without authentication */
+        fetch(`/notes/${this.props.match.params.id}`)
             .then(response => response.json())
             .then(data => this.setState({notes: data}));
-	*/
+
     }
 
     render() {

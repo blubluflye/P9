@@ -27,6 +27,8 @@ public class PatientService {
 		currentPatient.setName(patient.getName());
 		currentPatient.setAddress(patient.getAddress());
 		currentPatient.setTelephone(patient.getTelephone());
+		currentPatient.setGenre(patient.getGenre());
+		currentPatient.setBirthdate(patient.getBirthdate());
 		currentPatient = patientRepository.save(currentPatient);
 		return currentPatient;
 	}
