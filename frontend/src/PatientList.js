@@ -43,6 +43,13 @@ class PatientList extends Component {
         });
     }
 
+    logout(){
+	if(window.confirm("Are you sure want to Logout?")) {
+		fetch('/logout');
+	        window.location.href = '/';
+	    }
+    }
+
     render() {
         const {patients} = this.state;
 
@@ -66,6 +73,7 @@ class PatientList extends Component {
             <Container fluid>
                 <div className="float-right">
                     <Button color="success" tag={Link} to="/patients/add">Add Patient</Button>
+	     	    <p><button onClick={this.logout.bind(this)}>Logout</button></p>
                 </div>
                 <h3>Patients</h3>
                 <Table className="mt-4">
