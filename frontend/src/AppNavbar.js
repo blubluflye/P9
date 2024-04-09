@@ -8,6 +8,14 @@ export default class AppNavbar extends Component {
         this.state = {isOpen: false};
         this.toggle = this.toggle.bind(this);
     }
+    logout(){
+        if(window.confirm("Are you sure want to Logout?")) {
+            fetch('/logout');
+                window.location.href = '/';
+            }
+    }
+
+
 
     toggle() {
         this.setState({
@@ -18,6 +26,7 @@ export default class AppNavbar extends Component {
     render() {
         return <Navbar color="dark" dark expand="md">
             <NavbarBrand tag={Link} to="/">Home</NavbarBrand>
+		    <p><button onClick={this.logout.bind(this)}>Logout</button></p>
         </Navbar>;
     }
 }
