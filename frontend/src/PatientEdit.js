@@ -72,12 +72,12 @@ class PatientEdit extends Component {
             	<Form onSubmit={this.handleSubmit}>
                     <FormGroup>
                     	<Label for="name">Name *</Label>
-                    	<Input type="text" name="name" id="name" value={item.name}
+                    	<Input type="text" name="name" id="name" value={item.name} required
                             onChange={this.handleChange} autoComplete="name"/>
                     </FormGroup>
                     <FormGroup>
                         <Label for="surname">Surname *</Label>
-                        <Input type="text" name="surname" id="surname" value={item.surname}
+                        <Input type="text" name="surname" id="surname" value={item.surname} required
                             onChange={this.handleChange} autoComplete="surname"/>
                     </FormGroup>
 		    <FormGroup>

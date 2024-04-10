@@ -60,12 +60,13 @@ class NoteAdd extends Component {
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <Label for="name">Name</Label>
-                        <Input type="text" name="name" id="name" value={item.name || ''}
+                        <Input type="text" name="name" id="name" value={item.name} required
+
                             onChange={this.handleChange} autoComplete="name"/>
                 </FormGroup>
                 <FormGroup>
                     <Label for="note">Note</Label>
-                    <Input type="text" name="note" id="note" value={item.note || ''}
+                    <Input type="text" name="note" id="note" value={item.note} required
                            onChange={this.handleChange} autoComplete="note"/>
                 </FormGroup>
                 <FormGroup>

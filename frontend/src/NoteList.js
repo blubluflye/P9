@@ -10,19 +10,25 @@ const PASSWORD = 'pass'
 
 class NoteList extends Component {
 
+    emptyPatient = {
+        name: '',
+        surname: '',
+        birthdate: '',
+        genre: '',
+        address: '',
+        telephone: ''
+    };
+
+
     constructor(props) {
 	     super(props);
-        this.state = {notes: []};
+        this.state = {notes: [], patient: this.emptyPatient};
     }
 
     componentDidMount() {
-	/*axios.get(`/notes${this.props.match.params.id}`,
-            { headers: { authorization: 'Basic ' + window.btoa(INSTRUCTOR + ":" + PASSWORD) } }
-        ).then(response => {
-                this.setState({notes: response.data})
-            }
-        );*/
-	/*old method without authentication */
+	fetch(`/patients/${this.props.match.params.id}`)
+            .then(response => response.json())
+            .then(data => this.setState({patient: data}));
         fetch(`/notes/${this.props.match.params.id}`)
             .then(response => response.json())
             .then(data => this.setState({notes: data}));
@@ -31,6 +37,7 @@ class NoteList extends Component {
 
     render() {
         const {notes} = this.state;
+	const {patient} = this.state;
         const noteList = notes.map(note => {
             return <tr key={note.id}>
                 <td style={{whiteSpace: 'nowrap'}}>{note.name}</td>
@@ -47,7 +54,14 @@ class NoteList extends Component {
 	          <div className="float-right">
                     <Button color="success" tag={Link} to={"/testDiabete/" + this.props.match.params.id}>Test Diabete</Button>
                   </div>
-                <h3>Historique</h3>
+	        <h3>Informations du patient</h3>
+	    		<p>Name : {patient.name}</p>
+                	<p>Surname : {patient.surname}</p>
+                	<p>Birthdate : {patient.birthdate}</p>
+                	<p>Genre : {patient.genre}</p>
+                	<p>Address : {patient.address}</p>
+                	<p>Telephone : {patient.telephone}</p>
+                <h3>Notes du médecin</h3>
                 <Table className="mt-4">
                     <thead>
                     <tr>

@@ -69,32 +69,32 @@ class PatientAdd extends Component {
             	<Form onSubmit={this.handleSubmit}>
                     <FormGroup>
                     	<Label for="name">Name *</Label>
-                    	<Input type="text" name="name" id="name" value={item.name || ''}
+                    	<Input type="text" name="name" id="name" value={item.name} required
                             onChange={this.handleChange} autoComplete="name"/>
                     </FormGroup>
                     <FormGroup>
                         <Label for="surname">Surname *</Label>
-                        <Input type="text" name="surname" id="surname" value={item.surname || ''}
+                        <Input type="text" name="surname" id="surname" value={item.surname} required
                             onChange={this.handleChange} autoComplete="surname"/>
                     </FormGroup>
 		    <FormGroup>
                         <Label for="birthdate">Birthdate</Label>
-                        <Input type="date" name="birthdate" id="birthdate" value={item.birthdate || ''}
+                        <Input type="date" name="birthdate" id="birthdate" value={item.birthdate}
                             onChange={this.handleChange} autoComplete="birthdate"/>
                     </FormGroup>
 		    <FormGroup>
                         <Label for="genre">Genre</Label>
-                        <Input type="text" name="genre" id="genre" value={item.genre || ''}
+                        <Input type="text" name="genre" id="genre" value={item.genre}
                             onChange={this.handleChange} autoComplete="genre"/>
                     </FormGroup>
 		    <FormGroup>
                         <Label for="address">Address</Label>
-                        <Input type="text" name="address" id="address" value={item.address || ''}
+                        <Input type="text" name="address" id="address" value={item.address}
                             onChange={this.handleChange} autoComplete="address"/>
                     </FormGroup>
 		    <FormGroup>
                         <Label for="telephone">Telephone</Label>
-                        <Input type="text" name="telephone" id="telephone" value={item.telephone || ''}
+                        <Input type="text" name="telephone" id="telephone" value={item.telephone}
                             onChange={this.handleChange} autoComplete="telephone"/>
                     </FormGroup>
                     <FormGroup>
