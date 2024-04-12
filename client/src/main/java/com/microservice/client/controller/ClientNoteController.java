@@ -31,7 +31,6 @@ public class ClientNoteController {
 	
 	@PostMapping("/notes/{patId}")
 	public ResponseEntity<NoteBean> addPatientNote(@PathVariable Integer patId, @RequestBody NoteBean note) throws URISyntaxException{
-		System.out.println("demande d'ajout de note reçu. envoie de la demande au miicroservice note");
 		return notesProxy.createNote(patId, note);
 	}
 	
