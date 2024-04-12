@@ -8,6 +8,7 @@ import NoteList from './NoteList';
 import NoteAdd from './NoteAdd';
 import TestDiabete from './TestDiabete';
 import PatientEdit from './PatientEdit';
+import LoginPage from './LoginPage';
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
 	    <Route path='/notes/:id' component={NoteList}/>
             <Route path='/note/add/:id' component={NoteAdd}/>
 	    <Route path='/testDiabete/:id' component={TestDiabete}/>
+            <Route path='/LoginPage' element={<LoginPage/>} /> 
 	  </Switch>
         </Router>
     )
