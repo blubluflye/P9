@@ -4,14 +4,11 @@ import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 import axios from 'axios';
 
-const INSTRUCTOR = 'user'
-const PASSWORD = 'pass'
-
 class LoginPage extends Component {
 
     newUser = {
         username: '',
-        pass: ''
+        password: ''
     };
 
     constructor(props) {
@@ -32,23 +29,12 @@ class LoginPage extends Component {
         this.setState({user});
     }
 
-    //method for login
     async handleSubmit(event) {
         event.preventDefault();
         const {user} = this.state;
-	await axios.post('/login?username=user&password=pass', {headers:{'Accept': 'application/json',
+	await axios.post('/login?username=' + user.username + '&password='+ user.password, {headers:{'Accept': 'application/json',
                 'Content-Type': 'application/json'}}
 	);
-	//need to add parameters and fix this call
-        /*await fetch('/login?username=user&password=pass', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Basic ' + window.btoa(INSTRUCTOR + ":" + PASSWORD)
-            },
-	    body: JSON.stringify(user),
-        });*/
 	window.location.href='/patients';
     }
 

@@ -12,21 +12,29 @@ import com.p9.microservicetestdiabete.beans.PatientInfo;
 public class TestDiabeteService {
 	public String testdiabete(PatientInfo patientInfo) {
 		int count = 0;
-		// initiate list of word to check
-		String words = "Hémoglobine A1C,Microalbumine,Taille,Poids,Fumeur,Fumeuse,Anormal,Cholestérol,Vertiges,Rechute,Réaction,Anticorps";
+		String words = "Hémoglobine,Microalbumine,Taille,Poids,Fume,Anormal,Cholestérol,Vertige,Rechute,Réaction,Anticorps";
 		List<String> wordToCheck = Arrays.asList(words.toLowerCase().split(","));
-
-		// make the count of each instance of word to check in patient notes
+		System.out.println(wordToCheck.toString());
+		Boolean markerCheckList[] = new Boolean[wordToCheck.size()];
+		Arrays.fill(markerCheckList, false);
 		for (NoteBean note : patientInfo.getNotes()) {
 			List<String> noteWordArray = Arrays.asList(note.getNote().toLowerCase().split("\\P{L}+"));
-			for (String word : noteWordArray) {
-				if (wordToCheck.contains(word)) {
-					count++;
+			for (int j = 0; j < noteWordArray.size(); j++) {
+				for (int i = 0 ;i<wordToCheck.size(); i++) {
+					if (noteWordArray.get(j).contains(wordToCheck.get(i))) {
+						if (i == 1) {
+							if (j < noteWordArray.size()-1 && noteWordArray.get(j+1).contains("a1c"))
+								markerCheckList[i]=true;
+						}
+						else
+							markerCheckList[i]=true;
+					}
 				}
 			}
 		}
-
-		// test the count with patient personal information
+		for (Boolean marker : markerCheckList)
+			if (marker == true)
+				count++;
 		if (patientInfo.getAge() >= 30) {
 			if (count >= 8)
 				return "Early onset";
