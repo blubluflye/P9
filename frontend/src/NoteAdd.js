@@ -46,7 +46,7 @@ class NoteAdd extends Component {
             },
             body: JSON.stringify(item),
         });
-        this.props.history.push(`/notes/${this.props.match.params.id}`);
+        this.props.history.push(`/patient/info/${this.props.match.params.id}`);
     }
 
     render() {

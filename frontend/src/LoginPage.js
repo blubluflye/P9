@@ -30,12 +30,16 @@ class LoginPage extends Component {
     }
 
     async handleSubmit(event) {
+	try{
         event.preventDefault();
         const {user} = this.state;
 	await axios.post('/login?username=' + user.username + '&password='+ user.password, {headers:{'Accept': 'application/json',
                 'Content-Type': 'application/json'}}
 	);
 	window.location.href='/patients';
+	} catch(e){
+		window.confirm("bad username/password");
+	}
     }
 
 

@@ -16,19 +16,13 @@ class PatientList extends Component {
     }
 
     componentDidMount() {
-	//try login first
-	/*try new method to call api with axios for authentication*/
- 	axios.get('/patients',
+ 	const response = axios.get('/patients',
             { headers: { authorization: 'Basic ' + window.btoa(INSTRUCTOR + ":" + PASSWORD) } }
         ).then(response => {
 	        this.setState({patients: response.data})
 	    }
 	);
-	/*old method without authentication 
-        fetch('/patients')
-            .then(response => response.json())
-            .then(data => this.setState({patients: data}));
-	*/
+        console.log(response);
     }
 
     async remove(id) {
@@ -55,7 +49,7 @@ class PatientList extends Component {
             <td>
                 <ButtonGroup>
                     <Button size="sm" color="primary" tag={Link} to={"/patients/edit/" + patient.id}>Edit</Button>
-		    <Button size="sm" color="secondary" tag={Link} to={"/notes/" + patient.id}>Historique</Button>
+		    <Button size="sm" color="secondary" tag={Link} to={"/patient/info/" + patient.id}>Historique</Button>
 		</ButtonGroup>
             </td>
         </tr>

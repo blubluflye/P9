@@ -19,7 +19,7 @@ class App extends Component {
             <Route path='/patients' exact={true} component={PatientList}/>
             <Route path='/patients/add' component={PatientAdd}/>
 	    <Route path='/patients/edit/:id' component={PatientEdit}/>
-	    <Route path='/notes/:id' component={NoteList}/>
+	    <Route path='/patient/info/:id' component={NoteList}/>
             <Route path='/note/add/:id' component={NoteAdd}/>
 	    <Route path='/testDiabete/:id' component={TestDiabete}/>
 	    <Route path='/loginPage' component={LoginPage}/>

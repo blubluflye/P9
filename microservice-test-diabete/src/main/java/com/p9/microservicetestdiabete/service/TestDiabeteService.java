@@ -14,7 +14,6 @@ public class TestDiabeteService {
 		int count = 0;
 		String words = "Hémoglobine,Microalbumine,Taille,Poids,Fume,Anormal,Cholestérol,Vertige,Rechute,Réaction,Anticorps";
 		List<String> wordToCheck = Arrays.asList(words.toLowerCase().split(","));
-		System.out.println(wordToCheck.toString());
 		Boolean markerCheckList[] = new Boolean[wordToCheck.size()];
 		Arrays.fill(markerCheckList, false);
 		for (NoteBean note : patientInfo.getNotes()) {
