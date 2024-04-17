@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 class LoginPage extends Component {
 
@@ -36,6 +37,7 @@ class LoginPage extends Component {
 	await axios.post('/login?username=' + user.username + '&password='+ user.password, {headers:{'Accept': 'application/json',
                 'Content-Type': 'application/json'}}
 	);
+	Cookies.set('authenticated', true);
 	window.location.href='/patients';
 	} catch(e){
 		window.confirm("bad username/password");
