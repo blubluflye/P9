@@ -2,7 +2,6 @@ package com.p9.microservicetestdiabete.beans;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.List;
 
 public class PatientInfo {

@@ -28,7 +28,6 @@ public class NoteController {
 	
 	@PostMapping("/notes/{patId}")
 	public ResponseEntity<Note> createNote(@PathVariable Integer patId, @RequestBody Note note) throws URISyntaxException{
-		System.out.println("debut de l'ajout de la note :" + note.getName());
 		note.setPatId(patId);
 		Note savedNote = notes.save(note);
 		return ResponseEntity.created(new URI("/notes" + savedNote.getId())).body(savedNote);
