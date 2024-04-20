@@ -8,6 +8,18 @@ services:
       - "9101:9101"
     networks:
       - mynetwork
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    volumes:
+      - './:/app'
+      - '/app/node_modules'
+    ports:
+      - 3000:3000
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    command: npm start
   eureka:
     build:
       context: ./eureka-server
